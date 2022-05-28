@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', fn () => view('auth.login'));
+
 Route::middleware('auth', 'verified')->get('dashboard', fn () => 'ok')->name('dashboard');
