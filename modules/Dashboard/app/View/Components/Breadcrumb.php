@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Dashboard;
+namespace Modules\Dashboard\app\View\Components;
 
 use Illuminate\View\Component;
 
@@ -14,27 +14,27 @@ class Breadcrumb extends Component
     public function __construct(
         private string $title,
         private string $page,
+        private string $route,
         private string $active,
-        private string $route
     ) {
         $this->title = $title;
         $this->page = $page;
-        $this->active = $active;
         $this->route = $route;
+        $this->active = $active;
     }
 
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
+     * @return \Illuminate\View\View|string
      */
     public function render()
     {
-        return view('components.dashboard.breadcrumb', [
+        return view('dashboard::components.breadcrumb', [
             'title' => $this->title,
             'page' => $this->page,
-            'active' => $this->active,
             'route' => $this->route,
+            'active' => $this->active,
         ]);
     }
 }

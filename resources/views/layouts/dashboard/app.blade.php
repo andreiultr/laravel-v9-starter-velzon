@@ -30,9 +30,9 @@
   <!-- Begin page -->
   <div id="layout-wrapper">
 
-    <x-dashboard.topbar />
+    <x-dashboard::topbar />
     <!-- ========== App Menu ========== -->
-    <x-dashboard.sidebar />
+    <x-dashboard::sidebar />
     <!-- Left Sidebar End -->
     <!-- Vertical Overlay-->
     <div class="vertical-overlay"></div>
@@ -97,7 +97,7 @@
   </div>
 
   <!-- Theme Settings -->
-  <x-dashboard.theme-settings />
+  <x-dashboard::theme-settings />
 
   <!-- JAVASCRIPT -->
   <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

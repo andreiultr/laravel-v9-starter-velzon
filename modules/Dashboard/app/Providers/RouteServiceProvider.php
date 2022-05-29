@@ -4,6 +4,10 @@ namespace Modules\Dashboard\app\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use Modules\Dashboard\app\View\Components\Breadcrumb;
+use Modules\Dashboard\app\View\Components\Sidebar;
+use Modules\Dashboard\app\View\Components\Topbar;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -24,6 +28,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Blade::component('dashboard::topbar', Topbar::class);
+        Blade::component('dashboard::sidebar', Sidebar::class);
+        Blade::component('dashboard::breadcrumb', Breadcrumb::class);
     }
 
     /**
