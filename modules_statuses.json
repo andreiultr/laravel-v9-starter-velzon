@@ -1,4 +1,5 @@
 {
     "Dashboard": true,
-    "MenuManagement": true
+    "MenuManagement": true,
+    "PermissionManagement": true
 }
