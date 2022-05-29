@@ -33,7 +33,28 @@ class MenuItemSeederTableSeeder extends Seeder
                 'route' => 'menu.index',
                 'permission_name' => 'menu.index',
                 'menu_group_id' => 2,
-            ]
+            ],
+            [
+                'name' => 'Route Management',
+                'icon' => 'ri-menu-line',
+                'route' => 'menu.index',
+                'permission_name' => 'menu.index',
+                'menu_group_id' => 2,
+            ],
+            [
+                'name' => 'Role Management',
+                'icon' => 'ri-menu-line',
+                'route' => 'menu.index',
+                'permission_name' => 'menu.index',
+                'menu_group_id' => 2,
+            ],
+            [
+                'name' => 'Permission Management',
+                'icon' => 'ri-menu-line',
+                'route' => 'menu.index',
+                'permission_name' => 'menu.index',
+                'menu_group_id' => 2,
+            ],
         ]);
     }
 }

@@ -5,6 +5,9 @@ namespace Modules\MenuManagement\app\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\MenuManagement\app\Models\MenuGroup;
+use Modules\MenuManagement\app\Models\MenuItem;
+use Spatie\Permission\Models\Permission;
 
 class MenuItemController extends Controller
 {
@@ -12,9 +15,19 @@ class MenuItemController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request, MenuGroup $menu)
     {
-        return view('menumanagement::index');
+        $menuItems = $menu->items()
+            ->when(!blank($request->search), function ($query) use ($request) {
+                return $query
+                    ->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('permission_name', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('name')
+            ->paginate(10);
+        $permissions = Permission::orderBy('name')->get();
+
+        return view('menumanagement::menu.item.index', compact('menuItems', 'permissions'));
     }
 
     /**

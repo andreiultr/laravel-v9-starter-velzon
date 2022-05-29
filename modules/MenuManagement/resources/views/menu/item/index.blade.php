@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Menu')
+@section('title', 'Menu Items')
 
 @section('breadcrumb')
-<x-dashboard::breadcrumb title="Menu Management" page="Menu Management" active="Group" route="{{ route('menu.index') }}" />
+<x-dashboard::breadcrumb title="Menu Management" page="Menu Management" active="Item" route="{{ route('menu.index') }}" />
 @endsection
 
 @section('content')
@@ -25,20 +25,24 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
+        <th scope="col">Icon</th>
+        <th scope="col">Route</th>
         <th scope="col">Permission</th>
         <th scope="col">Status</th>
         <th scope="col" class="col-1"></th>
       </tr>
     </thead>
     <tbody>
-      @forelse ($menuGroups as $menuGroup)
+      @forelse ($menuItems as $menuItem)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $menuGroup->name }}</td>
-        <td>{{ $menuGroup->permission_name }}</td>
+        <td>{{ $menuItem->name }}</td>
+        <td>{{ $menuItem->icon }}</td>
+        <td>{{ $menuItem->route }}</td>
+        <td>{{ $menuItem->permission_name }}</td>
         <td>
           <div class="form-check form-switch form-switch-right form-switch-md">
-            <input class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" @checked($menuGroup->status) data-menu-id="{{ $menuGroup->id }}">
+            <input class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" @checked($menuItem->status) data-menu-id="{{ $menuItem->id }}">
           </div>
         </td>
         <td>
@@ -48,7 +52,7 @@
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="{{ route('menu.item.index', $menuGroup->id) }}">Manage Items</a></li>
+              <li><a class="dropdown-item" href="{{ route('menu.item.index', $menuItem->id) }}">Manage Items</a></li>
               <li><a class="dropdown-item" href="#">View</a></li>
               <li><a class="dropdown-item" href="#">Edit</a></li>
               <li><a class="dropdown-item" href="#">Delete</a></li>
@@ -65,7 +69,7 @@
   </table>
   <div class="card-footer py-4">
     <nav aria-label="..." class="pagination justify-content-end">
-      {{ $menuGroups->links() }}
+      {{ $menuItems->links() }}
     </nav>
   </div>
 </div>
