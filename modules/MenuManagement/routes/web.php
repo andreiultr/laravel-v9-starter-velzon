@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\MenuManagement\app\Http\Controllers\MenuGroupController;
+use Modules\MenuManagement\app\Http\Controllers\MenuItemController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,3 +14,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('menu', MenuGroupController::class)->only('index');
+Route::resource('menu.item', MenuItemController::class)->only('index');

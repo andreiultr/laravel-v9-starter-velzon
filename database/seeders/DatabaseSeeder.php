@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        print('-------- Core Seeder --------' . PHP_EOL);
         $this->call(UserSeeder::class);
+
+        print('-------- Module Seeder --------' . PHP_EOL);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class MenuManagementController extends Controller
+class MenuGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MenuManagementController extends Controller
      */
     public function index()
     {
-        return view('menumanagement::index');
+        return view('menumanagement::menu.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class MenuManagementController extends Controller
      */
     public function create()
     {
-        return view('menumanagement::create');
+        return view('menumanagement::menu.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class MenuManagementController extends Controller
      */
     public function show($id)
     {
-        return view('menumanagement::show');
+        return view('menumanagement::menu.show');
     }
 
     /**
@@ -53,7 +53,7 @@ class MenuManagementController extends Controller
      */
     public function edit($id)
     {
-        return view('menumanagement::edit');
+        return view('menumanagement::menu.edit');
     }
 
     /**
