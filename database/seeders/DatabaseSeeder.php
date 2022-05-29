@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Database\Seeders\User\UserSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\MenuManagement\database\seeders\MenuManagementDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
 
         print('-------- Module Seeder --------' . PHP_EOL);
+        $this->call(MenuManagementDatabaseSeeder::class);
     }
 }

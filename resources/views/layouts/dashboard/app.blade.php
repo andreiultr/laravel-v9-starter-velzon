@@ -52,6 +52,7 @@
             </div>
           </div>
           <!-- end page title -->
+          <x-form.notivication.alert />
 
           @yield('content')
 

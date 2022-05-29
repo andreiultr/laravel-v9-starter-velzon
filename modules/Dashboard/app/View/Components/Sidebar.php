@@ -3,6 +3,7 @@
 namespace Modules\Dashboard\app\View\Components;
 
 use Illuminate\View\Component;
+use Modules\MenuManagement\app\Models\MenuGroup;
 
 class Sidebar extends Component
 {
@@ -23,6 +24,10 @@ class Sidebar extends Component
      */
     public function render()
     {
-        return view('dashboard::components.sidebar');
+        $menus = MenuGroup::with('items')
+            ->where('status', true)
+            ->get();
+
+        return view('dashboard::components.sidebar', compact('menus'));
     }
 }

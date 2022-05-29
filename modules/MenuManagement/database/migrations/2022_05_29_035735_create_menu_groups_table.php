@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('menu_groups', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('name');
-            $table->string('icon');
+            $table->boolean('status')->default(true);
             $table->string('permission_name');
             $table->timestamps();
         });
