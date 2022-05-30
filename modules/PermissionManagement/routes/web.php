@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\PermissionManagement\app\Http\Controllers\Permission\PermissionController;
+use Modules\PermissionManagement\app\Http\Controllers\Role\RoleController;
+use Modules\PermissionManagement\app\Http\Controllers\Route\RouteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,3 +15,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('route', RouteController::class)->only('index');
+Route::resource('role', RoleController::class)->only('index');
+Route::resource('permission', PermissionController::class)->only('index');

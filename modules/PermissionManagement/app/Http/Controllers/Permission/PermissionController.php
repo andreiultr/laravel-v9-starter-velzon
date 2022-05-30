@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\PermissionManagement\app\Http\Controllers;
+namespace Modules\PermissionManagement\app\Http\Controllers\Permission;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class PermissionManagementController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PermissionManagementController extends Controller
      */
     public function index()
     {
-        return view('permissionmanagement::index');
+        return view('permissionmanagement::permission.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PermissionManagementController extends Controller
      */
     public function create()
     {
-        return view('permissionmanagement::create');
+        return view('permissionmanagement::permission.create');
     }
 
     /**
@@ -43,7 +43,7 @@ class PermissionManagementController extends Controller
      */
     public function show($id)
     {
-        return view('permissionmanagement::show');
+        return view('permissionmanagement::permission.show');
     }
 
     /**
@@ -53,7 +53,7 @@ class PermissionManagementController extends Controller
      */
     public function edit($id)
     {
-        return view('permissionmanagement::edit');
+        return view('permissionmanagement::permission.edit');
     }
 
     /**
