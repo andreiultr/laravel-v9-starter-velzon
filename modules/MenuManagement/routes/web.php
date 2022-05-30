@@ -15,5 +15,5 @@ use Modules\MenuManagement\app\Http\Controllers\MenuItemController;
 |
 */
 
-Route::resource('menu', MenuGroupController::class)->only('index', 'store');
-Route::resource('menu.item', MenuItemController::class)->only('index', 'store');
+Route::resource('menu', MenuGroupController::class)->only('index', 'store', 'update', 'destroy');
+Route::resource('menu.item', MenuItemController::class)->only('index', 'store', 'update', 'destroy');

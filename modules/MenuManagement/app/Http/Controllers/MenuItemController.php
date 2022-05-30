@@ -42,7 +42,7 @@ class MenuItemController extends Controller
      */
     public function create()
     {
-        return view('menumanagement::create');
+        return view('menumanagement::menu.item.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class MenuItemController extends Controller
      */
     public function show($id)
     {
-        return view('menumanagement::show');
+        return view('menumanagement::menu.item.show');
     }
 
     /**
@@ -74,7 +74,7 @@ class MenuItemController extends Controller
      */
     public function edit($id)
     {
-        return view('menumanagement::edit');
+        return view('menumanagement::menu.item.edit');
     }
 
     /**
@@ -83,9 +83,11 @@ class MenuItemController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StoreMenuitemRequest $request, MenuGroup $menu, MenuItem $item)
     {
-        //
+        return $item->update($this->_store($request, $menu))
+            ? back()->with('success', 'Menu item has been updated successfully!')
+            : back()->with('failed', 'Menu item was not updated successfully!');
     }
 
     /**
@@ -93,8 +95,10 @@ class MenuItemController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(MenuGroup $menu, MenuItem $item)
     {
-        //
+        return $item->delete()
+            ? back()->with('success', 'Menu item has been deleted successfully!')
+            : back()->with('failed', 'Menu item was not deleted successfully!');
     }
 }

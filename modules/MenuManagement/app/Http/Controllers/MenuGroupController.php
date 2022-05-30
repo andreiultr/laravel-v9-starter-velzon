@@ -80,9 +80,11 @@ class MenuGroupController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StoreMenuGroupRequest $request, MenuGroup $menu)
     {
-        //
+        return $menu->update($this->_store($request))
+            ? back()->with('success', 'Menu group has been updated successfully!')
+            : back()->with('failed', 'Menu group was not updated successfully!');
     }
 
     /**
@@ -90,8 +92,10 @@ class MenuGroupController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(MenuGroup $menu)
     {
-        //
+        return $menu->delete()
+            ? back()->with('success', 'Menu group has been deleted successfully!')
+            : back()->with('failed', 'Menu group was not deleted successfully!');
     }
 }

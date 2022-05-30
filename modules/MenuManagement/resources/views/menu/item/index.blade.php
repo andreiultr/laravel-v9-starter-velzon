@@ -53,10 +53,21 @@
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li><a class="dropdown-item" href="{{ route('menu.item.index', $menuItem->id) }}">Manage Items</a></li>
-              <li><a class="dropdown-item" href="#">View</a></li>
-              <li><a class="dropdown-item" href="#">Edit</a></li>
-              <li><a class="dropdown-item" href="#">Delete</a></li>
+              <li>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-form-edit-menu-{{ $menuItem->id }}">
+                  Edit
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('modal-form-delete-menu-{{ $menuItem->id }}').submit()">
+                  Delete
+                </a>
+              </li>
             </ul>
+
+            @include('menumanagement::components.form.modal.menu-item.edit')
+            @include('menumanagement::components.form.modal.menu-item.delete')
+
           </div>
         </td>
       </tr>
