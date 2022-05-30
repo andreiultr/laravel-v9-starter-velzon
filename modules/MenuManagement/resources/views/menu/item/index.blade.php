@@ -78,11 +78,11 @@
 <div id="modal-form-add-menu" class="modal fade" tabindex="-1" aria-labelledby="modal-form-add-menu-label" aria-hidden="true" style="display: none;">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form action="{{ route('menu.store') }}" method="post">
+      <form action="{{ route('menu.item.store', $menu->id) }}" method="post">
         @csrf
 
         <div class="modal-header">
-          <h5 class="modal-title" id="modal-form-add-menu-label">Add Menu Group</h5>
+          <h5 class="modal-title" id="modal-form-add-menu-label">Add Menu Item</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
         </div>
         <div class="modal-body">
@@ -93,9 +93,26 @@
           </div>
 
           <div class="mb-3">
+            <label for="icon" class="form-label">Icon</label>
+            <input type="text" class="form-control" id="icon" placeholder="Menu Icon" name="icon">
+            <x-form.validation.error name="icon" />
+          </div>
+
+          <div class="mb-3">
+            <label for="route" class="form-label">Route</label>
+            <select class="form-control" id="route" name="route" data-choices data-choices-removeItem>
+              @foreach ($routes as $route)
+              @if (!blank($route->getName()))
+              <option value="{{ $route->getName() }}">{{ $route->getName() }}</option>
+              @endif
+              @endforeach
+            </select>
+            <x-form.validation.error name="route" />
+          </div>
+
+          <div class="mb-3">
             <label for="permission_name" class="form-label">Permission Name</label>
             <select class="form-control" id="permission_name" name="permission_name" data-choices data-choices-removeItem>
-              <option value="trial" selected>trial</option>
               @foreach ($permissions as $permission)
               <option value="{{ $permission->name }}">{{ $permission->name }}</option>
               @endforeach

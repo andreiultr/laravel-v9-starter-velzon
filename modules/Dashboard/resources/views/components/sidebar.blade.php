@@ -36,7 +36,7 @@
                 @foreach ($menu->items as $item)
                 @if ($item->status)
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route($item->route) }}">
+                    <a class="nav-link menu-link{{ request()->routeIs($item->route) ? ' active' : '' }}" href="{{ route($item->route) }}">
                         <i class="{{ $item->icon }}"></i> <span data-key="t-landing">{{ $item->name }}</span>
                     </a>
                 </li>

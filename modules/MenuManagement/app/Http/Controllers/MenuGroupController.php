@@ -50,8 +50,8 @@ class MenuGroupController extends Controller
     public function store(StoreMenuGroupRequest $request)
     {
         return MenuGroup::create($this->_store($request))
-            ? back()->with('success', 'menu has been created successfully!')
-            : back()->with('failed', 'menu was not created successfully!');
+            ? back()->with('success', 'Menu group has been created successfully!')
+            : back()->with('failed', 'Menu group was not created successfully!');
     }
 
     /**

@@ -5,12 +5,17 @@ namespace Modules\MenuManagement\app\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Route;
+use Modules\MenuManagement\app\Helpers\MenuItemHelper;
+use Modules\MenuManagement\app\Http\Requests\MenuItem\StoreMenuitemRequest;
 use Modules\MenuManagement\app\Models\MenuGroup;
 use Modules\MenuManagement\app\Models\MenuItem;
 use Spatie\Permission\Models\Permission;
 
 class MenuItemController extends Controller
 {
+    use MenuItemHelper;
+
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -26,8 +31,9 @@ class MenuItemController extends Controller
             ->orderBy('name')
             ->paginate(10);
         $permissions = Permission::orderBy('name')->get();
+        $routes = Route::getRoutes();
 
-        return view('menumanagement::menu.item.index', compact('menuItems', 'permissions'));
+        return view('menumanagement::menu.item.index', compact('menu', 'menuItems', 'permissions', 'routes'));
     }
 
     /**
@@ -44,9 +50,11 @@ class MenuItemController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreMenuitemRequest $request, MenuGroup $menu)
     {
-        //
+        return MenuItem::create($this->_store($request, $menu))
+            ? back()->with('success', 'Menu item has been created successfully!')
+            : back()->with('failed', 'Menu item was not created successfully!');
     }
 
     /**
