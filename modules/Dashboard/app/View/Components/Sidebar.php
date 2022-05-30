@@ -24,9 +24,7 @@ class Sidebar extends Component
      */
     public function render()
     {
-        $menus = MenuGroup::with('items')
-            ->where('status', true)
-            ->get();
+        $menus = MenuGroup::with('items')->where('status', true)->get();
 
         return view('dashboard::components.sidebar', compact('menus'));
     }
