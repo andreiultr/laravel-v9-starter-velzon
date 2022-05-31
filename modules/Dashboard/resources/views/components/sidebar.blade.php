@@ -35,7 +35,6 @@
                 <li class="menu-title"><span data-key="t-menu">{{ $menu->name }}</span></li>
 
                 @foreach ($menu->items as $item)
-                @if ($item->status)
                 @can($item->permission_name)
                 <li class="nav-item">
                     <a class="nav-link menu-link{{ request()->routeIs($item->route) ? ' active' : '' }}" href="{{ route($item->route) }}">
@@ -44,8 +43,6 @@
                 </li>
                 @endcan
                 <!-- end can item -->
-                @endif
-                <!-- end if item status -->
                 @endforeach
                 <!-- end foreach items -->
                 @endcan

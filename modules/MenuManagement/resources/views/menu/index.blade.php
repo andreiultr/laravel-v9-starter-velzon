@@ -37,9 +37,11 @@
         <td>{{ $menuGroup->name }}</td>
         <td>{{ $menuGroup->permission_name }}</td>
         <td>
-          <div class="form-check form-switch form-switch-right form-switch-md">
-            <input class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" @checked($menuGroup->status) data-menu-id="{{ $menuGroup->id }}">
-          </div>
+          @if ($menuGroup->status)
+          <span class="badge badge-soft-success">Enable</span>
+          @else
+          <span class="badge badge-soft-danger">Disable</span>
+          @endif
         </td>
         <td>
           <div class="dropdown">
