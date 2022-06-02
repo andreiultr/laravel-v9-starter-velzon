@@ -19,7 +19,9 @@ class RoleController extends Controller
     {
         $roles = Role::query()
             ->when(!blank($request->search), function ($query) use ($request) {
-                return $query->where('name', 'like', '%' . $request->search . '%');
+                return $query
+                    ->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('guard_name', 'like', '%' . $request->search . '%');
             })
             ->with('permissions', function ($query) {
                 return $query->select('id', 'name');

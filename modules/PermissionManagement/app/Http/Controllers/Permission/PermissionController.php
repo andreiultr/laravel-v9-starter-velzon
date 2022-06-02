@@ -5,6 +5,9 @@ namespace Modules\PermissionManagement\app\Http\Controllers\Permission;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\PermissionManagement\app\Http\Requests\Permission\StorePermissionRequest;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -12,9 +15,22 @@ class PermissionController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('permissionmanagement::permission.index');
+        $permissions = Permission::query()
+            ->when(!blank($request->search), function ($query) use ($request) {
+                return $query
+                    ->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('guard_name', 'like', '%' . $request->search . '%');
+            })
+            ->with('roles', function ($query) {
+                return $query->select('id', 'name');
+            })
+            ->orderBy('name')
+            ->paginate(10);
+        $roles = Role::orderBy('name')->get();
+
+        return view('permissionmanagement::permission.index', compact('permissions', 'roles'));
     }
 
     /**
@@ -31,9 +47,12 @@ class PermissionController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StorePermissionRequest $request)
     {
-        //
+        return Permission::create($request->validated())
+            ?->assignRole(!blank($request->roles) ? $request->roles : array())
+            ? back()->with('success', 'Permission has been created successfully!')
+            : back()->with('failed', 'Permission was not created successfully!');
     }
 
     /**
@@ -62,9 +81,12 @@ class PermissionController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StorePermissionRequest $request, Permission $permission)
     {
-        //
+        return $permission->update($request->validated())
+            && $permission->syncRoles(!blank($request->roles) ? $request->roles : array())
+            ? back()->with('success', 'Permission has been updated successfully!')
+            : back()->with('failed', 'Permission was not updated successfully!');
     }
 
     /**
@@ -72,8 +94,10 @@ class PermissionController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        return $permission->delete()
+            ? back()->with('success', 'Permission has been deleted successfully!')
+            : back()->with('failed', 'Permission was not deleted successfully!');
     }
 }

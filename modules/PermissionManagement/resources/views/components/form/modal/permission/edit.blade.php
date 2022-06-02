@@ -1,41 +1,41 @@
 <!-- Modals add menu -->
-<div id="modal-form-edit-role-{{ $role->id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-form-edit-role-{{ $role->id }}-label" aria-hidden="true" style="display: none;">
+<div id="modal-form-edit-permission-{{ $permission->id }}" class="modal fade" tabindex="-1" aria-labelledby="modal-form-edit-permission-{{ $permission->id }}-label" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form action="{{ route('role.update', $role->id) }}" method="post">
+            <form action="{{ route('permission.update', $permission->id) }}" method="post">
                 @csrf
                 @method('PUT')
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-form-edit-role-{{ $role->id }}-label">Edit Role ({{ $role->name }})</h5>
+                    <h5 class="modal-title" id="modal-form-edit-permission-{{ $permission->id }}-label">Edit Permission ({{ $permission->name }})</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Role Name" name="name" value="{{ $role->name }}">
+                        <input type="text" class="form-control" id="name" placeholder="Permission Name" name="name" value="{{ $permission->name }}">
                         <x-form.validation.error name="name" />
                     </div>
 
                     <div class="mb-3">
                         <label for="guard_name" class="form-label">Guard</label>
-                        <input type="text" class="form-control" id="guard_name" placeholder="Guard Name" name="guard_name" value="{{ $role->guard_name }}">
+                        <input type="text" class="form-control" id="guard_name" placeholder="Guard Name" name="guard_name" value="{{ $permission->guard_name }}">
                         <x-form.validation.error name="guard_name" />
                     </div>
 
                     <div class="mb-3">
-                        <label for="permissions[]" class="form-label">Permission Name</label>
-                        <select class="form-control" id="permissions[]" name="permissions[]" data-choices data-choices-removeItem multiple>
-                            @foreach ($permissions as $permission)
-                            <option @selected($role->hasPermissionTo($permission->name)) value="{{ $permission->name }}">{{ $permission->name }}</option>
+                        <label for="roles[]" class="form-label">Role Name</label>
+                        <select class="form-control" id="roles[]" name="roles[]" data-choices data-choices-removeItem multiple>
+                            @foreach ($roles as $role)
+                            <option @selected($permission->hasRole($role->name)) value="{{ $role->name }}">{{ $role->name }}</option>
                             @endforeach
                         </select>
-                        <x-form.validation.error name="permissions" />
+                        <x-form.validation.error name="roles" />
                     </div>
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea type="text" class="form-control" id="description" placeholder="Role description" name="description">{{ $role->description }}</textarea>
+                        <textarea type="text" class="form-control" id="description" placeholder="Permission description" name="description">{{ $permission->description }}</textarea>
                         <x-form.validation.error name="description" />
                     </div>
 

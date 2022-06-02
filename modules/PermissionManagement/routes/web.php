@@ -18,4 +18,4 @@ use Modules\PermissionManagement\app\Http\Controllers\Route\RouteController;
 
 Route::resource('route', RouteController::class)->only('index');
 Route::resource('role', RoleController::class)->only('index', 'store', 'update', 'destroy');
-Route::resource('permission', PermissionController::class)->only('index');
+Route::resource('permission', PermissionController::class)->only('index', 'store', 'update', 'destroy');
