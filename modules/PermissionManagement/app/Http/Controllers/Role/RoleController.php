@@ -5,6 +5,9 @@ namespace Modules\PermissionManagement\app\Http\Controllers\Role;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\PermissionManagement\app\Http\Requests\Role\StoreRoleRequest;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -12,9 +15,20 @@ class RoleController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('permissionmanagement::role.index');
+        $roles = Role::query()
+            ->when(!blank($request->search), function ($query) use ($request) {
+                return $query->where('name', 'like', '%' . $request->search . '%');
+            })
+            ->with('permissions', function ($query) {
+                return $query->select('id', 'name');
+            })
+            ->orderBy('name')
+            ->paginate(10);
+        $permissions = Permission::orderBy('name')->get();
+
+        return view('permissionmanagement::role.index', compact('roles', 'permissions'));
     }
 
     /**
@@ -31,9 +45,12 @@ class RoleController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
-        //
+        return Role::create($request->validated())
+            ?->givePermissionTo(!blank($request->permissions) ? $request->permissions : array())
+            ? back()->with('success', 'Role has been created successfully!')
+            : back()->with('failed', 'Role was not created successfully!');
     }
 
     /**
@@ -62,9 +79,12 @@ class RoleController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StoreRoleRequest $request, Role $role)
     {
-        //
+        return $role->update($request->validated())
+            && $role->syncPermissions(!blank($request->permissions) ? $request->permissions : array())
+            ? back()->with('success', 'Role has been updated successfully!')
+            : back()->with('failed', 'Role was not updated successfully!');
     }
 
     /**
@@ -72,8 +92,11 @@ class RoleController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        return $role->revokePermissionTo($role->permissions)
+            && $role->delete()
+            ? back()->with('success', 'Role has been deleted successfully!')
+            : back()->with('failed', 'Role was not deleted successfully!');
     }
 }
