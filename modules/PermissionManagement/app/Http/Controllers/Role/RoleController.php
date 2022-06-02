@@ -96,8 +96,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        return $role->revokePermissionTo($role->permissions)
-            && $role->delete()
+        return $role->delete()
             ? back()->with('success', 'Role has been deleted successfully!')
             : back()->with('failed', 'Role was not deleted successfully!');
     }

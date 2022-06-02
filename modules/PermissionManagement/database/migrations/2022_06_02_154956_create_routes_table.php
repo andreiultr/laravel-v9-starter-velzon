@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
-
+            $table->string('route');
+            $table->string('permission_name');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

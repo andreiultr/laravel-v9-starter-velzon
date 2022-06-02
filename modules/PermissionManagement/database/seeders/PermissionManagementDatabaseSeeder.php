@@ -20,5 +20,6 @@ class PermissionManagementDatabaseSeeder extends Seeder
 
         $this->call(PermissionSeederTableSeeder::class);
         $this->call(RoleSeederTableSeeder::class);
+        $this->call(RouteSeederTableSeeder::class);
     }
 }

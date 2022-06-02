@@ -5,6 +5,10 @@ namespace Modules\PermissionManagement\app\Http\Controllers\Route;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Route as FacadesRoute;
+use Modules\PermissionManagement\app\Http\Requests\Route\StoreRouteRequest;
+use Modules\PermissionManagement\app\Models\Route;
+use Spatie\Permission\Models\Permission;
 
 class RouteController extends Controller
 {
@@ -12,9 +16,20 @@ class RouteController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('permissionmanagement::route.index');
+        $routes = Route::query()
+            ->when(!blank($request->search), function ($query) use ($request) {
+                return $query
+                    ->where('route', 'like', '%' . $request->search . '%')
+                    ->orWhere('guard_name', 'like', '%' . $request->search . '%');
+            })
+            ->orderBy('route')
+            ->paginate(10);
+        $facadesRoutes = FacadesRoute::getRoutes();
+        $permissions = Permission::orderBy('name')->get();
+
+        return view('permissionmanagement::route.index', compact('routes', 'permissions', 'facadesRoutes'));
     }
 
     /**
@@ -31,9 +46,11 @@ class RouteController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreRouteRequest $request)
     {
-        //
+        return Route::create($request->validated())
+            ? back()->with('success', 'Route has been created successfully!')
+            : back()->with('failed', 'Route was not created successfully!');
     }
 
     /**
@@ -62,9 +79,11 @@ class RouteController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(StoreRouteRequest $request, Route $route)
     {
-        //
+        return $route->update($request->validated())
+            ? back()->with('success', 'Route has been updated successfully!')
+            : back()->with('failed', 'Route was not updated successfully!');
     }
 
     /**
@@ -72,8 +91,10 @@ class RouteController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Route $route)
     {
-        //
+        return $route->delete()
+            ? back()->with('success', 'Route has been deleted successfully!')
+            : back()->with('failed', 'Route was not deleted successfully!');
     }
 }

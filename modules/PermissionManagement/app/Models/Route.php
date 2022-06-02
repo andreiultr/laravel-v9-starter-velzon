@@ -9,8 +9,8 @@ class Route extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
-    
+    protected $fillable = ['route', 'permission_name', 'description'];
+
     protected static function newFactory()
     {
         return \Modules\PermissionManagement\Database\factories\RouteFactory::new();
