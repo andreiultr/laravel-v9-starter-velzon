@@ -33,6 +33,12 @@
                         <x-form.validation.error name="permissions" />
                     </div>
 
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" id="description" placeholder="Role description" name="description">{{ $role->description }}</textarea>
+                        <x-form.validation.error name="description" />
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>

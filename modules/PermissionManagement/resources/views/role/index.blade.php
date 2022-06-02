@@ -42,7 +42,7 @@
           <span class="badge badge-soft-success">{{ $permission->name }}</span>
           @endforeach
         </td>
-        <td></td>
+        <td>{{ $role->description }}</td>
         <td>
           <div class="dropdown">
             <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
