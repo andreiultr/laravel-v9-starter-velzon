@@ -14,7 +14,9 @@
                         <label for="route" class="form-label">Route Name</label>
                         <select class="form-control" id="route" name="route" data-choices data-choices-removeItem>
                             @foreach ($facadesRoutes as $facadesRoute)
+                            @if (!blank($facadesRoute->getName()))
                             <option value="{{ $facadesRoute->getName() }}">{{ $facadesRoute->getName() }}</option>
+                            @endif
                             @endforeach
                         </select>
                         <x-form.validation.error name="route" />
