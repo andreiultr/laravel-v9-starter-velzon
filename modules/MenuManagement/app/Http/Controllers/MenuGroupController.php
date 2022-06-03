@@ -5,15 +5,13 @@ namespace Modules\MenuManagement\app\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\MenuManagement\app\Helpers\MenuGroupHelper;
 use Modules\MenuManagement\app\Http\Requests\MenuGroup\StoreMenuGroupRequest;
 use Modules\MenuManagement\app\Models\MenuGroup;
+use Modules\MenuManagement\app\Services\MenuGroupService;
 use Spatie\Permission\Models\Permission;
 
 class MenuGroupController extends Controller
 {
-    use MenuGroupHelper;
-
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -47,9 +45,9 @@ class MenuGroupController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(StoreMenuGroupRequest $request)
+    public function store(StoreMenuGroupRequest $request, MenuGroupService $menuGroupService)
     {
-        return MenuGroup::create($this->_store($request))
+        return $menuGroupService->create($request)
             ? back()->with('success', 'Menu group has been created successfully!')
             : back()->with('failed', 'Menu group was not created successfully!');
     }
@@ -80,9 +78,9 @@ class MenuGroupController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(StoreMenuGroupRequest $request, MenuGroup $menu)
+    public function update(StoreMenuGroupRequest $request, MenuGroup $menu, MenuGroupService $menuGroupService)
     {
-        return $menu->update($this->_store($request))
+        return $menuGroupService->update($request, $menu)
             ? back()->with('success', 'Menu group has been updated successfully!')
             : back()->with('failed', 'Menu group was not updated successfully!');
     }

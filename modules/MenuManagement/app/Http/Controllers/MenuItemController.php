@@ -6,16 +6,14 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
-use Modules\MenuManagement\app\Helpers\MenuItemHelper;
 use Modules\MenuManagement\app\Http\Requests\MenuItem\StoreMenuitemRequest;
 use Modules\MenuManagement\app\Models\MenuGroup;
 use Modules\MenuManagement\app\Models\MenuItem;
+use Modules\MenuManagement\app\Services\MenuItemService;
 use Spatie\Permission\Models\Permission;
 
 class MenuItemController extends Controller
 {
-    use MenuItemHelper;
-
     /**
      * Display a listing of the resource.
      * @return Renderable
@@ -50,9 +48,9 @@ class MenuItemController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(StoreMenuitemRequest $request, MenuGroup $menu)
+    public function store(StoreMenuitemRequest $request, MenuGroup $menu, MenuItemService $menuItemService)
     {
-        return MenuItem::create($this->_store($request, $menu))
+        return $menuItemService->create($request, $menu)
             ? back()->with('success', 'Menu item has been created successfully!')
             : back()->with('failed', 'Menu item was not created successfully!');
     }
@@ -83,9 +81,9 @@ class MenuItemController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(StoreMenuitemRequest $request, MenuGroup $menu, MenuItem $item)
+    public function update(StoreMenuitemRequest $request, MenuGroup $menu, MenuItem $item, MenuItemService $menuItemService)
     {
-        return $item->update($this->_store($request, $menu))
+        return $menuItemService->update($request, $menu, $item)
             ? back()->with('success', 'Menu item has been updated successfully!')
             : back()->with('failed', 'Menu item was not updated successfully!');
     }
