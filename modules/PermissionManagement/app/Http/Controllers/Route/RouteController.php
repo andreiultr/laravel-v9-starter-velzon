@@ -22,7 +22,7 @@ class RouteController extends Controller
             ->when(!blank($request->search), function ($query) use ($request) {
                 return $query
                     ->where('route', 'like', '%' . $request->search . '%')
-                    ->orWhere('guard_name', 'like', '%' . $request->search . '%');
+                    ->orWhere('permission_name', 'like', '%' . $request->search . '%');
             })
             ->orderBy('route')
             ->paginate(10);
