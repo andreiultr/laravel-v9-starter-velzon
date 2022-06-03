@@ -7,7 +7,7 @@
                 @method('PUT')
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-form-edit-route-{{ $route->id }}-label">Add Route</h5>
+                    <h5 class="modal-title" id="modal-form-edit-route-{{ $route->id }}-label">Edit Route ({{ $route->route }})</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
                 <div class="card-body">
@@ -15,7 +15,9 @@
                         <label for="route" class="form-label">Route Name</label>
                         <select class="form-control" id="route" name="route" data-choices data-choices-removeItem>
                             @foreach ($facadesRoutes as $facadesRoute)
+                            @if (!blank($facadesRoute->getName()))
                             <option @selected($route->permission_name == $facadesRoute->getName()) value="{{ $facadesRoute->getName() }}">{{ $facadesRoute->getName() }}</option>
+                            @endif
                             @endforeach
                         </select>
                         <x-form.validation.error name="route" />

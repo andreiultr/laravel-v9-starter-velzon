@@ -29,6 +29,12 @@ class PermissionSeederTableSeeder extends Seeder
         Permission::create(['name' => 'dashboard.index']);
 
         // menu group
+        Permission::create(['name' => 'user-management.index']);
+        Permission::create(['name' => 'user-management.store']);
+        Permission::create(['name' => 'user-management.update']);
+        Permission::create(['name' => 'user-management.destroy']);
+
+        // menu group
         Permission::create(['name' => 'menu.index']);
         Permission::create(['name' => 'menu.store']);
         Permission::create(['name' => 'menu.update']);

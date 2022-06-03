@@ -2,9 +2,14 @@
 
 namespace Modules\UserManagement\app\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\UserManagement\app\Http\Requests\StoreUserRequest;
+use Modules\UserManagement\app\Http\Requests\UpdateUserRequest;
+use Modules\UserManagement\app\Services\UserService;
+use Spatie\Permission\Models\Role;
 
 class UserManagementController extends Controller
 {
@@ -12,9 +17,22 @@ class UserManagementController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('usermanagement::index');
+        $users = User::query()
+            ->when(!blank($request->search), function ($query) use ($request) {
+                return $query
+                    ->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            })
+            ->with('roles', function ($query) {
+                return $query->select('name');
+            })
+            ->latest()
+            ->paginate(10);
+        $roles = Role::orderBy('name')->get();
+
+        return view('usermanagement::user.index', compact('users', 'roles'));
     }
 
     /**
@@ -23,7 +41,7 @@ class UserManagementController extends Controller
      */
     public function create()
     {
-        return view('usermanagement::create');
+        return view('usermanagement::user.create');
     }
 
     /**
@@ -31,9 +49,11 @@ class UserManagementController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request, UserService $userService)
     {
-        //
+        return $userService->create($request)
+            ? back()->with('success', 'User has been created successfully!')
+            : back()->with('failed', 'User was not created successfully!');
     }
 
     /**
@@ -43,7 +63,7 @@ class UserManagementController extends Controller
      */
     public function show($id)
     {
-        return view('usermanagement::show');
+        return view('usermanagement::user.show');
     }
 
     /**
@@ -53,7 +73,7 @@ class UserManagementController extends Controller
      */
     public function edit($id)
     {
-        return view('usermanagement::edit');
+        return view('usermanagement::user.edit');
     }
 
     /**
@@ -62,9 +82,11 @@ class UserManagementController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user_management, UserService $userService)
     {
-        //
+        return $userService->update($request, $user_management)
+            ? back()->with('success', 'User has been updated successfully!')
+            : back()->with('failed', 'User was not updated successfully!');
     }
 
     /**
@@ -72,8 +94,10 @@ class UserManagementController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(User $user_management)
     {
-        //
+        return $user_management->delete()
+            ? back()->with('success', 'User has been deleted successfully!')
+            : back()->with('failed', 'User was not deleted successfully!');
     }
 }

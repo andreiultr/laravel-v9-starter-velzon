@@ -24,7 +24,7 @@
             @csrf
           </form>
           <div class="mt-4">
-            <a href="{{ route('dashboard') }}" class="btn btn-success w-100">Back to Dashboard</a>
+            <a href="{{ route('dashboard.index') }}" class="btn btn-success w-100">Back to Dashboard</a>
           </div>
         </div>
       </div>

@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\UserManagement\app\Http\Controllers\UserManagementController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,3 +13,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('user-management', UserManagementController::class)->only('index', 'store', 'update', 'destroy');

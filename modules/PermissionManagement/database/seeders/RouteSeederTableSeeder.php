@@ -27,7 +27,27 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
-        // Menu Group
+        // User Management
+        Route::insert([
+            [
+                'route' => 'user-management.index',
+                'permission_name' => 'user-management.index'
+            ],
+            [
+                'route' => 'user-management.store',
+                'permission_name' => 'user-management.store'
+            ],
+            [
+                'route' => 'user-management.update',
+                'permission_name' => 'user-management.update'
+            ],
+            [
+                'route' => 'user-management.destroy',
+                'permission_name' => 'user-management.destroy'
+            ],
+        ]);
+
+        // Menu Group Management
         Route::insert([
             [
                 'route' => 'menu.index',
@@ -47,7 +67,7 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
-        // Menu Item
+        // Menu Item Management
         Route::insert([
             [
                 'route' => 'menu.item.index',

@@ -7,7 +7,7 @@
                 @method('PUT')
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-form-edit-menu-{{ $menuItem->id }}-label">Edit Menu Item</h5>
+                    <h5 class="modal-title" id="modal-form-edit-menu-{{ $menuItem->id }}-label">Edit Menu Item ({{ $menuItem->name }})</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
                 <div class="modal-body">

@@ -28,6 +28,13 @@ class MenuItemSeederTableSeeder extends Seeder
                 'menu_group_id' => 1,
             ],
             [
+                'name' => 'User Management',
+                'icon' => 'ri-file-user-line',
+                'route' => 'user-management.index',
+                'permission_name' => 'user-management.index',
+                'menu_group_id' => 2,
+            ],
+            [
                 'name' => 'Menu Management',
                 'icon' => 'ri-menu-line',
                 'route' => 'menu.index',
