@@ -23,7 +23,7 @@ class PermissionSeederTableSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         Permission::create(['name' => 'general']);
-        Permission::create(['name' => 'option']);
+        Permission::create(['name' => 'setting']);
 
         // dashboard
         Permission::create(['name' => 'dashboard.index']);

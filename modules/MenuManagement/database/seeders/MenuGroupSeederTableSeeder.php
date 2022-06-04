@@ -25,8 +25,8 @@ class MenuGroupSeederTableSeeder extends Seeder
                 'permission_name' => 'general',
             ],
             [
-                'name' => 'Option',
-                'permission_name' => 'option',
+                'name' => 'Setting',
+                'permission_name' => 'setting',
             ]
         ]);
     }
