@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web', 'auth', 'verified')
+        Route::middleware('web', 'auth', 'verified', 'permission')
             // ->namespace($this->moduleNamespace)
             ->group(module_path('Dashboard', '/routes/web.php'));
     }
