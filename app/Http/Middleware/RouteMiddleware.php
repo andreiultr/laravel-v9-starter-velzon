@@ -22,6 +22,6 @@ class RouteMiddleware
 
         return blank($routes) || (bool) $routes->status && $request->user()->can($routes->permission_name)
             ? $next($request)
-            : redirect(RouteServiceProvider::HOME);
+            : redirect(RouteServiceProvider::HOME)->with('failed', 'you do not have access to this route!');
     }
 }
