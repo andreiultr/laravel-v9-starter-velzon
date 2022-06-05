@@ -26,7 +26,6 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Guard</th>
-        <th scope="col">Permission</th>
         <th scope="col">Description</th>
         <th scope="col" class="col-1"></th>
       </tr>
@@ -37,11 +36,6 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $role->name }}</td>
         <td>{{ $role->guard_name }}</td>
-        <td>
-          @foreach ($role->permissions as $permission)
-          <span class="badge badge-soft-success">{{ $permission->name }}</span>
-          @endforeach
-        </td>
         <td>{{ $role->description }}</td>
         <td>
           <div class="dropdown">

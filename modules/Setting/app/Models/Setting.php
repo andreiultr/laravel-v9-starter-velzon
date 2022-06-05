@@ -9,7 +9,7 @@ class Setting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'data'];
+    protected $fillable = ['name', 'value'];
 
     protected static function newFactory()
     {
