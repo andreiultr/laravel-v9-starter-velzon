@@ -14,4 +14,4 @@ use Modules\UserManagement\app\Http\Controllers\UserManagementController;
 |
 */
 
-Route::resource('user-management', UserManagementController::class)->only('index', 'store', 'update', 'destroy');
+Route::resource('user', UserManagementController::class)->only('index', 'store', 'update', 'destroy');

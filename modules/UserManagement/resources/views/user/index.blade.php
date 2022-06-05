@@ -4,7 +4,7 @@
 @section('title', 'User Management')
 
 @section('breadcrumb')
-<x-dashboard::breadcrumb title="User Management" page="User Management" active="Users" route="{{ route('user-management.index') }}" />
+<x-dashboard::breadcrumb title="User Management" page="User Management" active="Users" route="{{ route('user.index') }}" />
 @endsection
 
 @section('content')

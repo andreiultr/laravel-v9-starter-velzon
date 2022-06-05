@@ -82,9 +82,9 @@ class UserManagementController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(UpdateUserRequest $request, User $user_management, UserService $userService)
+    public function update(UpdateUserRequest $request, User $user, UserService $userService)
     {
-        return $userService->update($request, $user_management)
+        return $userService->update($request, $user)
             ? back()->with('success', 'User has been updated successfully!')
             : back()->with('failed', 'User was not updated successfully!');
     }
@@ -94,9 +94,9 @@ class UserManagementController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy(User $user_management)
+    public function destroy(User $user)
     {
-        return $user_management->delete()
+        return $user->delete()
             ? back()->with('success', 'User has been deleted successfully!')
             : back()->with('failed', 'User was not deleted successfully!');
     }

@@ -38,9 +38,9 @@
         <td>{{ $menuGroup->permission_name }}</td>
         <td>
           @if ($menuGroup->status)
-          <span class="badge badge-soft-success">Enable</span>
+          <span class="badge badge-soft-success">Show</span>
           @else
-          <span class="badge badge-soft-danger">Disable</span>
+          <span class="badge badge-soft-danger">Hide</span>
           @endif
         </td>
         <td>

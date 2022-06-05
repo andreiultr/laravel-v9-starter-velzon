@@ -26,6 +26,7 @@
         <th scope="col">#</th>
         <th scope="col">Route</th>
         <th scope="col">Permission</th>
+        <th scope="col">Status</th>
         <th scope="col">Description</th>
         <th scope="col" class="col-1"></th>
       </tr>
@@ -35,7 +36,16 @@
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
         <td>{{ $route->route }}</td>
-        <td><span class="badge badge-soft-success">{{ $route->permission_name }}</span></td>
+        <td>
+          <span class="badge badge-soft-success">{{ $route->permission_name }}</span>
+        </td>
+        <td>
+          @if ($route->status)
+          <span class="badge badge-soft-success">Enable</span>
+          @else
+          <span class="badge badge-soft-danger">Disable</span>
+          @endif
+        </td>
         <td>{{ $route->description }}</td>
         <td>
           <div class="dropdown">

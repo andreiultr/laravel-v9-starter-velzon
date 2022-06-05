@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route as FacadesRoute;
 use Modules\PermissionManagement\app\Http\Requests\Route\StoreRouteRequest;
 use Modules\PermissionManagement\app\Models\Route;
+use Modules\PermissionManagement\app\Services\RouteService;
 use Spatie\Permission\Models\Permission;
 
 class RouteController extends Controller
@@ -46,9 +47,9 @@ class RouteController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(StoreRouteRequest $request)
+    public function store(StoreRouteRequest $request, RouteService $routeService)
     {
-        return Route::create($request->validated())
+        return $routeService->create($request)
             ? back()->with('success', 'Route has been created successfully!')
             : back()->with('failed', 'Route was not created successfully!');
     }
@@ -79,9 +80,9 @@ class RouteController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(StoreRouteRequest $request, Route $route)
+    public function update(StoreRouteRequest $request, Route $route, RouteService $routeService)
     {
-        return $route->update($request->validated())
+        return $routeService->update($request, $route)
             ? back()->with('success', 'Route has been updated successfully!')
             : back()->with('failed', 'Route was not updated successfully!');
     }

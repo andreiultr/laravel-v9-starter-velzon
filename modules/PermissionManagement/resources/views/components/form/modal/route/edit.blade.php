@@ -39,6 +39,14 @@
                         <x-form.validation.error name="description" />
                     </div>
 
+                    <div class="mb-3">
+                        <div class="form-check form-switch form-switch-right form-switch-md">
+                            <label for="status" class="form-label">Status</label>
+                            <input class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" name="status" @checked($route->status)>
+                        </div>
+                        <x-form.validation.error name="status" />
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>

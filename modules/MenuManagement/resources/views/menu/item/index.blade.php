@@ -42,9 +42,9 @@
         <td>{{ $menuItem->permission_name }}</td>
         <td>
           @if ($menuItem->status)
-          <span class="badge badge-soft-success">Enable</span>
+          <span class="badge badge-soft-success">Show</span>
           @else
-          <span class="badge badge-soft-danger">Disable</span>
+          <span class="badge badge-soft-danger">Hide</span>
           @endif
         </td>
         <td>
@@ -54,7 +54,6 @@
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="{{ route('menu.item.index', $menuItem->id) }}">Manage Items</a></li>
               <li>
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-form-edit-menu-{{ $menuItem->id }}">
                   Edit

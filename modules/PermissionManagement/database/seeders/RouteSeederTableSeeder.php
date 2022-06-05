@@ -42,20 +42,20 @@ class RouteSeederTableSeeder extends Seeder
         // User Management
         Route::insert([
             [
-                'route' => 'user-management.index',
-                'permission_name' => 'user-management.index'
+                'route' => 'user.index',
+                'permission_name' => 'user.index'
             ],
             [
-                'route' => 'user-management.store',
-                'permission_name' => 'user-management.store'
+                'route' => 'user.store',
+                'permission_name' => 'user.store'
             ],
             [
-                'route' => 'user-management.update',
-                'permission_name' => 'user-management.update'
+                'route' => 'user.update',
+                'permission_name' => 'user.update'
             ],
             [
-                'route' => 'user-management.destroy',
-                'permission_name' => 'user-management.destroy'
+                'route' => 'user.destroy',
+                'permission_name' => 'user.destroy'
             ],
         ]);
 

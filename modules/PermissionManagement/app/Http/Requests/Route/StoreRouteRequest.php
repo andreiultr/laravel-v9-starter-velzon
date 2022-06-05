@@ -17,6 +17,7 @@ class StoreRouteRequest extends FormRequest
             'route' => ['required', 'string'],
             'permission_name' => ['required', 'string'],
             'description' => ['nullable', 'string'],
+            'status' => ['nullable', 'string'],
         ];
     }
 

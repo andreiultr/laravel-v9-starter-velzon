@@ -33,10 +33,10 @@ class PermissionSeederTableSeeder extends Seeder
         Permission::create(['name' => 'setting.update']);
 
         // Uenu Management
-        Permission::create(['name' => 'user-management.index']);
-        Permission::create(['name' => 'user-management.store']);
-        Permission::create(['name' => 'user-management.update']);
-        Permission::create(['name' => 'user-management.destroy']);
+        Permission::create(['name' => 'user.index']);
+        Permission::create(['name' => 'user.store']);
+        Permission::create(['name' => 'user.update']);
+        Permission::create(['name' => 'user.destroy']);
 
         // Menu Group
         Permission::create(['name' => 'menu.index']);
