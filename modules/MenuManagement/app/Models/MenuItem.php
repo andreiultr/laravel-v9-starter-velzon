@@ -11,6 +11,8 @@ class MenuItem extends Model
 
     protected $fillable = ['name', 'icon', 'route', 'status', 'permission_name', 'menu_group_id'];
 
+    protected $casts = ['status' => 'boolean'];
+
     protected static function newFactory()
     {
         return \Modules\MenuManagement\Database\factories\MenuItemFactory::new();

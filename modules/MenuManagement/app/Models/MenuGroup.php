@@ -11,6 +11,8 @@ class MenuGroup extends Model
 
     protected $fillable = ['name', 'status', 'permission_name'];
 
+    protected $casts = ['status' => 'boolean'];
+
     protected static function newFactory()
     {
         return \Modules\MenuManagement\Database\factories\MenuGroupFactory::new();
