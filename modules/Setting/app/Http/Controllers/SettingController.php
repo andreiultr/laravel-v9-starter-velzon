@@ -5,6 +5,7 @@ namespace Modules\Setting\app\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Setting\app\Models\Setting;
 
 class SettingController extends Controller
 {
@@ -14,7 +15,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('setting::index');
+        $settings = Setting::paginate(10);
+
+        return view('setting::setting.index', compact('settings'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        return view('setting::create');
+        return view('setting::setting.create');
     }
 
     /**
@@ -43,7 +46,7 @@ class SettingController extends Controller
      */
     public function show($id)
     {
-        return view('setting::show');
+        return view('setting::setting.show');
     }
 
     /**
@@ -53,7 +56,7 @@ class SettingController extends Controller
      */
     public function edit($id)
     {
-        return view('setting::edit');
+        return view('setting::setting.edit');
     }
 
     /**

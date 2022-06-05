@@ -4,8 +4,9 @@ namespace Modules\Setting\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Setting\app\Models\Setting;
 
-class SettingDatabaseSeeder extends Seeder
+class SettingSeederTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,6 +19,14 @@ class SettingDatabaseSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
 
-        $this->call(SettingSeederTableSeeder::class);
+        $data = array(
+            'role' => 'User',
+            'email_should_verified' => true
+        );
+
+        Setting::create([
+            'name' => 'setting',
+            'data' => json_encode($data)
+        ]);
     }
 }

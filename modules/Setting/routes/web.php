@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Modules\Setting\app\Http\Controllers\SettingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,3 +13,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::resource('setting', SettingController::class)->only('index', 'update');

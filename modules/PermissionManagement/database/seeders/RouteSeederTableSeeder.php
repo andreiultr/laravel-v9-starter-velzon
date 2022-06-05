@@ -27,6 +27,18 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
+        // General Setting
+        Route::insert([
+            [
+                'route' => 'setting.index',
+                'permission_name' => 'setting.index'
+            ],
+            [
+                'route' => 'setting.update',
+                'permission_name' => 'setting.update'
+            ],
+        ]);
+
         // User Management
         Route::insert([
             [
@@ -87,7 +99,7 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
-        // route management
+        // Route Management
         Route::insert([
             [
                 'route' => 'route.index',
@@ -107,7 +119,7 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
-        // role management
+        // Role Management
         Route::insert([
             [
                 'route' => 'role.index',
@@ -127,7 +139,7 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
-        // permission management
+        // Permission Management
         Route::insert([
             [
                 'route' => 'permission.index',

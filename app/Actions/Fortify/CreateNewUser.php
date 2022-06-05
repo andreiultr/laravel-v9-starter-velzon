@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Modules\Setting\app\Models\Setting;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -32,10 +33,12 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        $role = json_decode(Setting::firstWhere('name', 'setting')->data)->role;
+
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-        ])->assignRole('User');
+        ])->assignRole($role);
     }
 }
