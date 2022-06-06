@@ -27,6 +27,15 @@ DB_PASSWORD=root
 php artisan migrate:fresh --seed
 ```
 
+## Feature
+
+-   General Setting
+-   User Management
+-   Menu Management
+-   Route Management
+-   Role Management
+-   Permission Management
+
 ## Default User Login
 
 ```text
