@@ -21,7 +21,6 @@ class SettingSeederTableSeeder extends Seeder
 
         $data = array(
             'role' => 'User',
-            'email_should_verified' => true,
         );
 
         Setting::create([

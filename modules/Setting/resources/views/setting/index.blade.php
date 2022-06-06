@@ -29,13 +29,6 @@
         </select>
       </div>
 
-      <div class="mb-3">
-        <div class="form-check form-switch form-check-right">
-          <input class="form-check-input" type="checkbox" role="switch" id="email_should_verified" checked name="email_should_verified" value="1">
-          <label class="form-check-label" for="email_should_verified">Email Should Verified</label>
-        </div>
-      </div>
-
       <button type="submit" class="btn btn-primary">Update</button>
 
     </form>

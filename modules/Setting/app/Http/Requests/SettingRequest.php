@@ -15,7 +15,6 @@ class SettingRequest extends FormRequest
     {
         return [
             'role' => ['required', 'string'],
-            'email_should_verified' => ['required', 'boolean']
         ];
     }
 
