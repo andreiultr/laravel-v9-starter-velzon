@@ -36,6 +36,12 @@ php artisan migrate:fresh --seed
 -   Role Management
 -   Permission Management
 
+## Start Serve
+
+```bash
+php artisan serve
+```
+
 ## Default User Login
 
 ```text
