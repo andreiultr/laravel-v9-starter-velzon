@@ -19,8 +19,15 @@ class SettingSeederTableSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
 
+        $logo = array(
+            'sm' => 'logo-sm.png',
+            'dark' => 'logo-dark.png',
+            'light' => 'logo-light.png',
+        );
+
         $data = array(
             'role' => 'User',
+            'logo' => json_encode($logo)
         );
 
         Setting::create([
