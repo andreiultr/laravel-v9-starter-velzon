@@ -17,6 +17,10 @@
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
   <!-- Icons CSS -->
   <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+  <!-- custom CSS-->
+  @stack('plugin-css')
+
   <!-- App CSS-->
   <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
   <!-- custom CSS-->
@@ -108,9 +112,12 @@
   <script src="{{ asset('assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
   <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
+  <!-- custom JS-->
+  @stack('plugin-script')
 
   <!-- App js -->
   <script src="{{ asset('assets/js/app.js') }}"></script>
+
   <!-- custom JS-->
   @stack('script')
 

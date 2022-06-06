@@ -1,6 +1,5 @@
 @extends('layouts.dashboard.app')
 
-
 @section('title', 'User Management')
 
 @section('breadcrumb')

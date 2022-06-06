@@ -52,7 +52,7 @@
                         </div>
                         <h5 class="fs-13 text-center mt-2">Horizontal</h5>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 d-none">
                         <div class="form-check card-radio">
                             <input id="customizer-layout03" name="data-layout" type="radio" value="twocolumn" class="form-check-input">
                             <label class="form-check-label p-0 avatar-md w-100" for="customizer-layout03">

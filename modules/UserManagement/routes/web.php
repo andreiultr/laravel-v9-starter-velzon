@@ -16,6 +16,6 @@ use Modules\UserManagement\app\Http\Controllers\UserManagementController;
 */
 
 Route::resource('user', UserManagementController::class)->only('index', 'store', 'update', 'destroy');
-// Route::prefix('user')->group(function () {
-//   Route::resource('profile', UserProfileController::class)->only('index');
-// });
+Route::prefix('user')->group(function () {
+  Route::resource('profile', UserProfileController::class)->only('index');
+});
