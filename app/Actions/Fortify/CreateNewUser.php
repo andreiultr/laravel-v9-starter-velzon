@@ -33,7 +33,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        $role = json_decode(Setting::firstWhere('name', 'setting')->data)->role;
+        $role = json_decode(Setting::first()->data)->role;
 
         return User::create([
             'name' => $input['name'],

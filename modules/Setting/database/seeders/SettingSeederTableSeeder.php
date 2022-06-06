@@ -19,15 +19,14 @@ class SettingSeederTableSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
 
-        Setting::insert([
-            [
-                'name' => 'role',
-                'value' => 'User'
-            ],
-            [
-                'name' => 'verified',
-                'value' => true
-            ],
+        $data = array(
+            'role' => 'User',
+            'email_should_verified' => true,
+        );
+
+        Setting::create([
+            'name' => 'General',
+            'data' => json_encode($data)
         ]);
     }
 }

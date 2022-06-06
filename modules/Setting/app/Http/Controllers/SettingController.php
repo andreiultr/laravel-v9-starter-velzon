@@ -5,7 +5,10 @@ namespace Modules\Setting\app\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Setting\app\Http\Requests\SettingRequest;
 use Modules\Setting\app\Models\Setting;
+use Modules\Setting\app\Services\SettingService;
+use Spatie\Permission\Models\Role;
 
 class SettingController extends Controller
 {
@@ -15,9 +18,11 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $settings = Setting::paginate(10);
+        $setting = Setting::first();
+        $roles = Role::all();
+        $data = json_decode($setting->data);
 
-        return view('setting::setting.index', compact('settings'));
+        return view('setting::setting.index', compact('setting', 'roles', 'data'));
     }
 
     /**
@@ -65,9 +70,11 @@ class SettingController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(SettingRequest $request, Setting $setting, SettingService $settingService)
     {
-        //
+        return $settingService->update($request, $setting)
+            ? back()->with('success', 'Setting has been updated successfully!')
+            : back()->with('failed', 'Setting was not updated successfully!');
     }
 
     /**

@@ -8,83 +8,38 @@
 @endsection
 
 @section('content')
-<div class="card card-height-100 table-responsive">
+<div class="card card-height-100">
   <!-- cardheader -->
   <div class="card-header border-bottom-dashed align-items-center d-flex">
-    <h4 class="card-title mb-0 flex-grow-1">User</h4>
-    <div class="flex-shrink-0">
-      <button type="button" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-form-add-user">
-        <i class="ri-add-line"></i>
-        Add
-      </button>
-    </div>
+    <h4 class="card-title mb-0 flex-grow-1">Setting</h4>
   </div>
   <!-- end cardheader -->
-  <!-- Hoverable Rows -->
-  <table class="table table-hover table-nowrap mb-0">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
-        <th scope="col">Verified</th>
-        <th scope="col" class="col-1"></th>
-      </tr>
-    </thead>
-    <tbody>
-      @forelse ($settings as $user)
-      <tr>
-        <th scope="row">{{ $loop->iteration }}</th>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->email }}</td>
-        <td>
-          <span class="badge badge-soft-success">Superadmin</span>
-        </td>
-        <td>
-          @if (!blank($user->email_verified_at))
-          <span class="badge badge-soft-success">Verified</span>
-          @else
-          <span class="badge badge-soft-danger">Not Verified</span>
-          @endif
-        </td>
-        <td>
-          <div class="dropdown">
-            <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="ri-more-2-fill"></i>
-            </a>
+  <div class="card-body">
 
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li>
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modal-form-edit-user-{{ $user->id }}">
-                  Edit
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('modal-form-delete-user-{{ $user->id }}').submit()">
-                  Delete
-                </a>
-              </li>
-            </ul>
+    <form action="{{ route('setting.update', $setting->id) }}" method="post">
+      @csrf
+      @method('PUT')
 
-            {{-- @include('usermanagement::components.form.modal.user.edit') --}}
-            {{-- @include('usermanagement::components.form.modal.user.delete') --}}
-          </div>
-        </td>
-      </tr>
-      @empty
-      <tr>
-        <th colspan="5" class="text-center">No data to display</th>
-      </tr>
-      @endforelse
-    </tbody>
-  </table>
-  <div class="card-footer py-4">
-    <nav aria-label="..." class="pagination justify-content-end">
-      {{ $settings->links() }}
-    </nav>
+      <div class="mb-3">
+        <label for="role" class="form-label">Default User Role</label>
+        <select class="form-select mb-3" aria-label="Select User Role" data-choices name="role">
+          @foreach ($roles as $role)
+          <option @selected($role->name == $data->role) value="{{ $role->name }}">{{ $role->name }}</option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <div class="form-check form-switch form-check-right">
+          <input class="form-check-input" type="checkbox" role="switch" id="email_should_verified" checked name="email_should_verified" value="1">
+          <label class="form-check-label" for="email_should_verified">Email Should Verified</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+
+    </form>
+
   </div>
 </div>
-
-{{-- @include('usermanagement::components.form.modal.user.add') --}}
 @endsection
