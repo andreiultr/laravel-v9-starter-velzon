@@ -6,6 +6,25 @@
 git clone https://github.com/b0rnt0ber00t/laravel-v9-starter-velzon.git
 cd laravel-v9-starter-velzon
 composer install && yarn
+cp .env.example .env
+php artisan key:generate
+```
+
+## Database Config
+
+```text
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+## Migrate Database
+
+```bash
+php artisan migrate:fresh --seed
 ```
 
 ## Default User Login
