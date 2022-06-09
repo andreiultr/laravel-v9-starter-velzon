@@ -11,16 +11,15 @@
   <!-- App favicon -->
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+  <!-- custom CSS-->
+  @stack('plugin-css')
+
   <!-- Layout config Js -->
   <script src="{{ asset('assets/js/layout.js') }}"></script>
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
   <!-- Icons CSS -->
   <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
-  <!-- custom CSS-->
-  @stack('plugin-css')
-
   <!-- App CSS-->
   <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
   <!-- custom CSS-->
