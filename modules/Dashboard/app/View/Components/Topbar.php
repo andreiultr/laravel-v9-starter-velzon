@@ -23,8 +23,8 @@ class Topbar extends Component
      */
     public function render()
     {
-        $user = auth()->user();
-
-        return view('dashboard::components.topbar', compact('user'));
+        return view('dashboard::components.topbar', [
+            'user' => auth()->user()
+        ]);
     }
 }
