@@ -59,6 +59,14 @@ class RouteSeederTableSeeder extends Seeder
             ],
         ]);
 
+        // User Profile
+        Route::insert([
+            [
+                'route' => 'profile.index',
+                'permission_name' => 'profile.index'
+            ]
+        ]);
+
         // Menu Group Management
         Route::insert([
             [
