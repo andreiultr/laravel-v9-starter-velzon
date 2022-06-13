@@ -23,7 +23,7 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'dashboard.index',
-                'permission_name' => 'dashboard.index'
+                'permission_name' => 'dashboard_index'
             ],
         ]);
 
@@ -31,11 +31,11 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'setting.index',
-                'permission_name' => 'setting.index'
+                'permission_name' => 'setting_index'
             ],
             [
                 'route' => 'setting.update',
-                'permission_name' => 'setting.update'
+                'permission_name' => 'setting_update'
             ],
         ]);
 
@@ -43,19 +43,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'user.index',
-                'permission_name' => 'user.index'
+                'permission_name' => 'user_index'
             ],
             [
                 'route' => 'user.store',
-                'permission_name' => 'user.store'
+                'permission_name' => 'user_store'
             ],
             [
                 'route' => 'user.update',
-                'permission_name' => 'user.update'
+                'permission_name' => 'user_update'
             ],
             [
                 'route' => 'user.destroy',
-                'permission_name' => 'user.destroy'
+                'permission_name' => 'user_destroy'
             ],
         ]);
 
@@ -63,7 +63,7 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'profile.index',
-                'permission_name' => 'profile.index'
+                'permission_name' => 'profile_index'
             ]
         ]);
 
@@ -71,19 +71,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'menu.index',
-                'permission_name' => 'menu.index'
+                'permission_name' => 'menu_index'
             ],
             [
                 'route' => 'menu.store',
-                'permission_name' => 'menu.store'
+                'permission_name' => 'menu_store'
             ],
             [
                 'route' => 'menu.update',
-                'permission_name' => 'menu.update'
+                'permission_name' => 'menu_update'
             ],
             [
                 'route' => 'menu.destroy',
-                'permission_name' => 'menu.destroy'
+                'permission_name' => 'menu_destroy'
             ],
         ]);
 
@@ -91,19 +91,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'menu.item.index',
-                'permission_name' => 'menu.item.index'
+                'permission_name' => 'menu_item_index'
             ],
             [
                 'route' => 'menu.item.store',
-                'permission_name' => 'menu.item.store'
+                'permission_name' => 'menu_item_store'
             ],
             [
                 'route' => 'menu.item.update',
-                'permission_name' => 'menu.item.update'
+                'permission_name' => 'menu_item_update'
             ],
             [
                 'route' => 'menu.item.destroy',
-                'permission_name' => 'menu.item.destroy'
+                'permission_name' => 'menu_item_destroy'
             ],
         ]);
 
@@ -111,19 +111,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'route.index',
-                'permission_name' => 'route.index'
+                'permission_name' => 'route_index'
             ],
             [
                 'route' => 'route.store',
-                'permission_name' => 'route.store'
+                'permission_name' => 'route_store'
             ],
             [
                 'route' => 'route.update',
-                'permission_name' => 'route.update'
+                'permission_name' => 'route_update'
             ],
             [
                 'route' => 'route.destroy',
-                'permission_name' => 'route.destroy'
+                'permission_name' => 'route_destroy'
             ],
         ]);
 
@@ -131,19 +131,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'role.index',
-                'permission_name' => 'role.index'
+                'permission_name' => 'role_index'
             ],
             [
                 'route' => 'role.store',
-                'permission_name' => 'role.store'
+                'permission_name' => 'role_store'
             ],
             [
                 'route' => 'role.update',
-                'permission_name' => 'role.update'
+                'permission_name' => 'role_update'
             ],
             [
                 'route' => 'role.destroy',
-                'permission_name' => 'role.destroy'
+                'permission_name' => 'role_destroy'
             ],
         ]);
 
@@ -151,19 +151,19 @@ class RouteSeederTableSeeder extends Seeder
         Route::insert([
             [
                 'route' => 'permission.index',
-                'permission_name' => 'permission.index'
+                'permission_name' => 'permission_index'
             ],
             [
                 'route' => 'permission.store',
-                'permission_name' => 'permission.store'
+                'permission_name' => 'permission_store'
             ],
             [
                 'route' => 'permission.update',
-                'permission_name' => 'permission.update'
+                'permission_name' => 'permission_update'
             ],
             [
                 'route' => 'permission.destroy',
-                'permission_name' => 'permission.destroy'
+                'permission_name' => 'permission_destroy'
             ],
         ]);
     }

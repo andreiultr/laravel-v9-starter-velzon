@@ -25,7 +25,7 @@ class RoleSeederTableSeeder extends Seeder
         $user = Role::create(['name' => 'User']);
 
         $superadmin->givePermissionTo(Permission::all());
-        $user->givePermissionTo(['general', 'dashboard.index', 'profile.index']);
+        $user->givePermissionTo(['general', 'dashboard_index', 'profile_index']);
 
         User::firstWhere('name', 'Super Admin')->assignRole('Super Admin');
         User::firstWhere('name', 'User')->assignRole('User');
