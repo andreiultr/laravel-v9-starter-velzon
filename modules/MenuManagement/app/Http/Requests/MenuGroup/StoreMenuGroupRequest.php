@@ -16,7 +16,7 @@ class StoreMenuGroupRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'permission_name' => ['required', 'string'],
-            'status' => ['sometimes', 'required', 'string']
+            'status' => ['sometimes', 'required', 'boolean']
         ];
     }
 

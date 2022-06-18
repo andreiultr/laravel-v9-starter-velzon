@@ -18,7 +18,7 @@ class StoreUserRequest extends FormRequest
             // 'email' => ['required', 'string', 'email:rfc,dns,spoof', 'unique:users'],
             'email' => ['required', 'string', 'email:rfc', 'unique:users'],
             'role' => ['nullable', 'string'],
-            'verified' => ['nullable', 'string'],
+            'verified' => ['nullable', 'boolean'],
         ];
     }
 

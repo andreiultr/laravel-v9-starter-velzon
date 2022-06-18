@@ -36,7 +36,7 @@
                     <div class="mb-3">
                         <div class="form-check form-switch form-switch-right form-switch-md">
                             <label for="verified" class="form-label">Verified</label>
-                            <input @checked(!blank($user->email_verified_at)) class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" name="verified">
+                            <input class="form-check-input code-switcher" type="checkbox" id="tables-small-showcode" name="verified" value="1" @checked(!blank($user->email_verified_at))>
                         </div>
                         <x-form.validation.error name="verified" />
                     </div>

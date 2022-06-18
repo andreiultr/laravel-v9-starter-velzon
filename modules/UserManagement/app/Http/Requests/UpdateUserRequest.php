@@ -18,7 +18,7 @@ class UpdateUserRequest extends FormRequest
             // 'email' => ['required', 'string', 'email:rfc,dns,spoof'],
             'email' => ['required', 'string', 'email:rfc'],
             'role' => ['nullable', 'string'],
-            'verified' => ['nullable', 'string'],
+            'verified' => ['nullable', 'boolean'],
         ];
     }
 
