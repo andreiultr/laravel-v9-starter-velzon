@@ -11,7 +11,10 @@ class MenuGroupService
   {
     return MenuGroup::create(array_merge(
       $request->validated(),
-      array('status' => !blank($request->status) ? true : false),
+      array(
+        'status' => !blank($request->status) ? true : false,
+        'posision' => MenuGroup::max('posision') + 1
+      ),
     ));
   }
 

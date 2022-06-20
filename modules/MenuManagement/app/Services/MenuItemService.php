@@ -14,7 +14,8 @@ class MenuItemService
       $request->validated(),
       array(
         'menu_group_id' => $menuGroup->id,
-        'status' => !blank($request->status) ? true : false
+        'status' => !blank($request->status) ? true : false,
+        'posision' => $menuGroup->items()->max('posision') + 1
       )
     ));
   }

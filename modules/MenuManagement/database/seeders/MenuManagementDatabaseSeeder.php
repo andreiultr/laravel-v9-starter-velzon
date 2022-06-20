@@ -4,8 +4,6 @@ namespace Modules\MenuManagement\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\MenuManagement\app\Models\MenuGroup;
-use Modules\MenuManagement\app\Models\MenuItem;
 
 class MenuManagementDatabaseSeeder extends Seeder
 {
@@ -20,7 +18,7 @@ class MenuManagementDatabaseSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
 
-        $this->call(MenuGroupSeederTableSeeder::class);
-        $this->call(MenuItemSeederTableSeeder::class);
+        $this->call(MenuGeneralSeederTableSeeder::class);
+        $this->call(MenuSettingSeederTableSeeder::class);
     }
 }

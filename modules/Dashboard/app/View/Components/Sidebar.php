@@ -26,9 +26,10 @@ class Sidebar extends Component
     {
         $menus = MenuGroup::query()
             ->with('items', function ($query) {
-                return $query->where('status', true);
+                return $query->where('status', true)->orderBy('posision');
             })
             ->where('status', true)
+            ->orderBy('posision')
             ->get();
 
         return view('dashboard::components.sidebar', compact('menus'));
