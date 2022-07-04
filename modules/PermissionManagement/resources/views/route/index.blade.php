@@ -10,7 +10,7 @@
 <div class="card card-height-100 table-responsive">
   <!-- cardheader -->
   <div class="card-header border-bottom-dashed align-items-center d-flex">
-    <h4 class="card-title mb-0 flex-grow-1">Permission</h4>
+    <h4 class="card-title mb-0 flex-grow-1">Route</h4>
     <div class="flex-shrink-0">
       <button type="button" class="btn btn-soft-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-form-add-route">
         <i class="ri-add-line"></i>

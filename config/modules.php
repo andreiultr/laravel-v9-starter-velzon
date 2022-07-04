@@ -102,7 +102,7 @@ return [
         */
         'generator' => [
             'config' => ['path' => 'config', 'generate' => true],
-            'command' => ['path' => 'app/Console', 'generate' => true],
+            'command' => ['path' => 'app/Console/Commands', 'generate' => true],
             'migration' => ['path' => 'database/migrations', 'generate' => true],
             'seeder' => ['path' => 'database/seeders', 'generate' => true],
             'factory' => ['path' => 'database/factories', 'generate' => true],
@@ -125,7 +125,7 @@ return [
             'jobs' => ['path' => 'app/Jobs', 'generate' => false],
             'emails' => ['path' => 'Emails', 'generate' => false],
             'notifications' => ['path' => 'app/Notifications', 'generate' => false],
-            'resource' => ['path' => 'app/Transformers', 'generate' => false],
+            'resource' => ['path' => 'app/Resources', 'generate' => false],
             'component-view' => ['path' => 'resources/views/components', 'generate' => false],
             'component-class' => ['path' => 'app/View/Components', 'generate' => false],
         ],
